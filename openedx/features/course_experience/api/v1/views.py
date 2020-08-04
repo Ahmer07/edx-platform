@@ -80,9 +80,5 @@ class CourseDeadlinesMobileView(RetrieveAPIView):
     serializer_class = CourseDeadlinesMobileSerializer
 
     def get(self, request, *args, **kwargs):
-        course_key_string = kwargs.get('course_key_string')
-        course_key = CourseKey.from_string(course_key_string)
-        get_course_with_access(request.user, 'load', course_key)
-
         serializer = self.get_serializer({})
         return Response(serializer.data)
